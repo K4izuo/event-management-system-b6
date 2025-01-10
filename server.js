@@ -300,9 +300,11 @@ app.get("/events-data", async (req, res) => {
 });
 
 app.put("/update-event/:event_id", async (req, res) => {
+
   try {
     const { id, title, date, time, location, attendees, description, category, status } = req.body;
-    const query = "UPDATE events SET title = ?, date = ?, time = ?, location = ?, attendees = ?, description = ?, category = ?, status = ? WHERE id = ?";
+    const query =
+      "UPDATE events SET title = ?, date = ?, time = ?, location = ?, attendees = ?, description = ?, category = ?, status = ? WHERE id = ?";
     db.query(query, [title, date, time, location, attendees, description, category, status, id],
       function (err, results) {
         if (err) {
