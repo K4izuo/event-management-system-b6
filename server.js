@@ -9,9 +9,9 @@ const port = 10000;
 // Database configuration
 const dbConfig = {
   host: "sql12.freesqldatabase.com",
-  user: "sql12756792",
-  password: "AjrwLx5aV3",
-  database: "sql12756792",
+  user: "sql12756942",
+  password: "6n6QvU94hA",
+  database: "sql12756942",
   port: 3306
 };
 
