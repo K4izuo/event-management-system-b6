@@ -18,7 +18,7 @@ const dbConfig = {
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://k4izuo.github.io'],
+  origin: ['http://localhost:5173', 'https://K4izuo.github.io'],
   credentials: true
 }));
 
