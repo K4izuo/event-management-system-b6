@@ -190,6 +190,45 @@ app.post("/register", async (req, res) => {
   }
 });
 
+// Logout endpoint
+app.post("/logout", async (req, res) => {
+  try {
+    // Since we're not using sessions, we'll just send a success response
+    // The frontend will handle clearing local storage
+    
+    // You could add additional cleanup here if needed, such as:
+    // - Invalidating tokens if you implement token-based auth
+    // - Clearing any server-side sessions if you implement session management
+    // - Logging the logout event in your database
+    
+    const logLogout = () => {
+      return new Promise((resolve, reject) => {
+        const query = "INSERT INTO user_logs (action_type, timestamp) VALUES (?, NOW())";
+        db.query(query, ['logout'], (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(result);
+          }
+        });
+      });
+    };
+
+    await logLogout();
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully"
+    });
+  } catch (error) {
+    console.error("Logout error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred during logout. Please try again."
+    });
+  }
+});
+
 // Event endpoints
 app.post("/send-event", async (req, res) => {
   try {
